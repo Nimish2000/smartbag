@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "975492441846",
+    "project_id": "smart-bag-tracking-syste-89fc6",
+    "storage_bucket": "smart-bag-tracking-syste-89fc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975492441846:android:029ed53097cf2e1f7baed7",
+        "android_client_info": {
+          "package_name": "com.example.smartbag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975492441846-djs4hdovs1atgtu4gcm3aauannokrote.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-5MZLB7yfj5LrvV4gS876cF82uL0GAvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975492441846-djs4hdovs1atgtu4gcm3aauannokrote.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
