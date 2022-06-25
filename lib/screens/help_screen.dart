@@ -39,11 +39,21 @@ class _HelpScreenState extends State<HelpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(245, 255, 255, 255),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 181, 75, 103),
         title: Text("Help Center"),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Tooltip(
+              child: Icon(Icons.info),
+              message:
+                  "If a bag is not reached in 15 min from origin time please complain",
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -54,7 +64,7 @@ class _HelpScreenState extends State<HelpScreen> {
                 tag: 'logo',
                 child: Container(
                   height: 175.0,
-                  child: Image.asset('assets/images/helpLogo.jpeg'),
+                  child: Image.asset('assets/images/help_logo.jpeg'),
                 ),
               ),
             ),
@@ -89,7 +99,7 @@ class _HelpScreenState extends State<HelpScreen> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.04,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             RaisedButton(
               elevation: 5.0,
@@ -144,6 +154,16 @@ class _HelpScreenState extends State<HelpScreen> {
                         color: Colors.white,
                       ),
                     ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text("Instructions:"),
+              trailing: Text(""),
+              subtitle: Text(
+                  "If the bag is not reached in 15 min between any checkpoints please complain !!"),
             ),
           ],
         ),
