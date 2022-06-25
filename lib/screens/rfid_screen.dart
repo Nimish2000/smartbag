@@ -179,6 +179,7 @@ class _AddScreenState extends State<AddScreen> {
                     'flightNumber': flightNumber.text,
                     'bagWeight': bagWeight.text,
                     'node': 0,
+                    'timestamp': FieldValue.serverTimestamp(),
                   });
                   var snackBar =
                       SnackBar(content: Text('Bag Added Successfully'));

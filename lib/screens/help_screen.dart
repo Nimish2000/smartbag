@@ -54,7 +54,7 @@ class _HelpScreenState extends State<HelpScreen> {
                 tag: 'logo',
                 child: Container(
                   height: 175.0,
-                  child: Image.asset('assets/images/logo 4.jpg'),
+                  child: Image.asset('assets/images/helpLogo.jpeg'),
                 ),
               ),
             ),

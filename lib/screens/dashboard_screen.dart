@@ -21,7 +21,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   var uid;
   String name = "";
 
-  Widget stepRow(var step, var node) {
+  Widget stepRow(var step, var node, var val) {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0, left: 24.0, bottom: 20.0),
       child: Row(
@@ -50,7 +50,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             width: 14.0,
           ),
           Text(
-            "Step $step",
+            val,
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -60,17 +60,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  Widget RFID(var rfid, var node) {
+  Widget RFID(var rfid, var node, var bagWeight, var flightName, Timestamp t) {
+    var temp = t.toDate();
     return ExpansionTile(
       title: Text("RFID : $rfid"),
       leading: Icon(Icons.badge),
-      subtitle: Text("weight : 20kg , flight : Indigo"),
+      subtitle: Text("weight : " + bagWeight + "Kg" + ", flight : $flightName"),
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            stepRow(1, node),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0),
+              child: Text(
+                "Check-In time : ",
+                style: TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0),
+              child: Text(
+                t.toDate().toString(),
+                style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            stepRow(1, node, "Check-In"),
             SizedBox(
               height: 8.0,
             ),
@@ -85,7 +111,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             SizedBox(
               height: 8.0,
             ),
-            stepRow(2, node),
+            stepRow(2, node, "Processing"),
             SizedBox(
               height: 8.0,
             ),
@@ -100,7 +126,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             SizedBox(
               height: 8.0,
             ),
-            stepRow(3, node),
+            stepRow(3, node, "Boarded On Plane"),
           ],
         ),
       ],
@@ -209,13 +235,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     var data = snapshot.data!.docs[index].data()
                         as Map<String, dynamic>;
                     if (name.isEmpty) {
-                      return RFID(snapshot.data!.docs[index].id, data['node']);
+                      return RFID(
+                          snapshot.data!.docs[index].id,
+                          data['node'],
+                          data['bagWeight'],
+                          data['flightName'],
+                          data['timestamp']);
                     }
                     if (snapshot.data!.docs[index].id
                         .toString()
                         .toLowerCase()
                         .startsWith(name.toLowerCase())) {
-                      return RFID(snapshot.data!.docs[index].id, data['node']);
+                      return RFID(
+                          snapshot.data!.docs[index].id,
+                          data['node'],
+                          data['bagWeight'],
+                          data['flightName'],
+                          data['timestamp']);
                     }
                     return Container();
                   },
